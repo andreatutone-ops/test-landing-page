@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benvenuti Hospitality Managers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            background-color: #111; /* Sfondo scuro di base */
+        }
+
+        /* Contenitore principale */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Fondamentale per non far sbordare lo zoom */
+        }
+
+        /* 1. Livello Sfondo con Animazione (Ken Burns) */
+        .bg-image {
+            position: absolute;
+            top: -5%; left: -5%; /* Margine per permettere il movimento */
+            width: 110%; height: 110%;
+            background: url('https://images.unsplash.com/photo-1544919101-9037c7674254?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            /* L'animazione: dura 25 secondi, andata e ritorno, fluida */
+            animation: kenBurns 25s ease-in-out infinite alternate;
+        }
+
+        /* 2. Livello Filtro Scuro (Per la leggibilità) */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 100%);
+            box-shadow: inset 0 0 150px rgba(0,0,0,0.8);
+            z-index: 2;
+        }
+
+        /* 3. Livello Contenuto (Vetro Satinato) */
+        .content-box {
+            position: relative;
+            z-index: 3;
+            padding: 50px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            max-width: 80%;
+            text-align: center;
+            animation: fadeIn 2s ease-out 0.5s both; /* Aggiunto leggero ritardo (0.5s) */
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #ffffff;
+            line-height: 1.2;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #d4af37; /* Oro leggermente più caldo ed elegante */
+            display: block;
+            font-style: italic;
+            margin: 10px 0;
+        }
+
+        /* --- KEYFRAMES --- */
+
+        /* Il nostro effetto cinematografico */
+        @keyframes kenBurns {
+            0% { 
+                transform: scale(1) translate(0, 0); 
+            }
+            100% { 
+                transform: scale(1.15) translate(-2%, -2%); 
+            }
+        }
+
+        /* Ingresso del testo */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .content-box { padding: 30px; max-width: 90%; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section">
+        <div class="bg-image"></div>
+        <div class="overlay"></div>
+        
+        <div class="content-box">
+            <h1>Un benvenuto agli studenti <br> 
+                <span class="highlight">Hospitality Manager</span> 
+                di Rimini
+            </h1>
+        </div>
+    </section>
+
+</body>
+</html>
